@@ -13,6 +13,10 @@ import { getEventAttendees } from "./routes/get-event-attendees";
 import { RegisterForEvent } from "./routes/register-for-event";
 
 import { fastifyCors } from "@fastify/cors";
+import { deleteAttendee } from "./routes/delete-attendee";
+import { deleteEvent } from "./routes/delete-event";
+import { updateAttendee } from "./routes/update-attendee";
+import { updateEvent } from "./routes/update-event";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -46,6 +50,10 @@ app.register(getEvent)
 app.register(getAttendeeBadge)
 app.register(CheckIn)
 app.register(getEventAttendees)
+app.register(updateEvent)
+app.register(deleteEvent)
+app.register(updateAttendee)
+app.register(deleteAttendee)
 
 app.setErrorHandler(errorHandler)
 
